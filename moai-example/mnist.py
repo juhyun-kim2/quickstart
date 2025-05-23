@@ -160,7 +160,7 @@ def main():
     properties = torch.cuda.get_device_properties(torch.cuda.current_device())
     print(f'properties = torch.cuda.get_device_properties(torch.cuda.current_device())')
     print(f'{properties=}')
-    print(f"Total GPU memory: {properties.total_memory / (1024 ** 3):.2f} GB")
+    print(f"Total GPU memory of current_device(): {properties.total_memory / (1024 ** 3):.2f} GB")
 
     train_kwargs = {'batch_size': args.batch_size}
     test_kwargs = {'batch_size': args.test_batch_size}
