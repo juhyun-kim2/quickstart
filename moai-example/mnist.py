@@ -152,6 +152,15 @@ def main():
     torch.manual_seed(args.seed)
 
     device = "cuda" if not args.no_cuda else "cpu"
+    print(f'{torch.cuda.is_available()=}')
+    print(f'{torch.cuda.device_count()=}')
+    print(f'{torch.device(device)=}')
+    print(f'{torch.cuda.current_device()=}, {torch.cuda.get_device_name(0)=}')
+
+    properties = torch.cuda.get_device_properties(torch.cuda.current_device())
+    print(f'properties = torch.cuda.get_device_properties(torch.cuda.current_device())')
+    print(f'{properties=}')
+    print(f"Total GPU memory: {properties.total_memory / (1024 ** 3):.2f} GB")
 
     train_kwargs = {'batch_size': args.batch_size}
     test_kwargs = {'batch_size': args.test_batch_size}
